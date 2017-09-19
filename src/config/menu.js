@@ -29,7 +29,11 @@ export default [
       }, {
         name: 'demoPage_e',
         path: '/home/demoPage_e'
+      },{
+        name: 'demoPage_f',
+        path: '/home/demoPage_f'
       }
+      
     ]
   }
 ]
