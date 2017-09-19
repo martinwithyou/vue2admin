@@ -78,10 +78,21 @@
   .top-menu-item:hover {
     background-color: rgb(90, 197, 232);
   }
+  .system_title{
+  	width:200px;
+  	height:70px;
+  	line-height:70px;
+  	font-size:24px;
+  	padding-left:20px;
+  	float:left;
+  }
 </style>
 <template>
   <div class="main-wrapper main-sidebar-l" :class="{'sidebar-mini':menuIsFold}">
     <header class="main-header">
+    	<div class="system_title">
+    		雪橙金服
+    	</div>
       <el-button type="text" class="top-menu-item" @click="logout"><i class="el-icon-upload2"></i>&nbsp;退出</el-button>
     </header>
     <c-menu></c-menu>

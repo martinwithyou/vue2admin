@@ -34,18 +34,18 @@
         <el-menu-item index="1"><i class="el-icon-menu"></i>首页</el-menu-item>
       </el-menu>
       <div slot="center">
-        <img src="../../assets/logo.png" />
-        <div style="font-size: 46px;">vue2admin</div>
+      <!--<img src="../../assets/logo.jpg" />-->
+        <div style="font-size: 46px;">雪橙金服管理系统</div>
       </div>
     </c-waves>
   </div>
 </template>
 <script>
   import CWaves from 'components/CWaves'
-
-  export default {
-    components: {
-      CWaves
+  
+    export default {
+      components: {
+        CWaves
+      }
     }
-  }
 </script>

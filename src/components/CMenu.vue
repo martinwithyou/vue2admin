@@ -207,8 +207,8 @@
     </div>
     <div class="nav-feed-back">
       <ul class="feed-back sidebar-mini-hide">
-        <li><a target="_blank" href="http://bbs.sdp.nd/forum.php">FAQ中心</a></li>
-        <li>开发问题讨论群：2141760</li>
+        <!--<li><a target="_blank" href="http://bbs.sdp.nd/forum.php">FAQ中心</a></li>
+        <li>开发问题讨论群：2141760</li>-->
       </ul>
     </div>
   </nav>

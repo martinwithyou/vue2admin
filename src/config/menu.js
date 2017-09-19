@@ -11,24 +11,24 @@ export default [
       }, {
         name: '页面2',
         path: '/home/page2'
-      }
-    ]
-  },
-  {
-    name: '环境',
-    items: [
-      {
-        name: '页面1',
-        path: '/env/page2'
+      },{
+      	name: '页面3',
+      	path: '/home/demoPage'
+      },{
+        name: 'TablePage_a',
+        path: '/home/demoPage_a'
       }, {
-        name: '页面2',
-        path: '/env/page2'
+        name: 'demoPage_b',
+        path: '/home/demoPage_b'
       }, {
-        name: '页面3',
-        path: '/env/page3'
+        name: 'demoPage_c',
+        path: '/home/demoPage_c'
       }, {
-        name: '页面4',
-        path: '/env/page4'
+        name: 'demoPage_d',
+        path: '/home/demoPage_d'
+      }, {
+        name: 'demoPage_e',
+        path: '/home/demoPage_e'
       }
     ]
   }

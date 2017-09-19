@@ -1,16 +1,33 @@
 <style scoped>
   .login {
-    margin-top: 16px;
+    margin-top: 300px;
+    border-top:5px solid #d9d9d9;
+    border-bottom:5px solid #d9d9d9;
+    background-color:#ffffff !important;
   }
 
   .login-form {
-    border: 1px solid #eaeefb;
+    border: 0px solid #eaeefb;
     border-radius: 4px;
     transition: .2s;
     padding: 16px;
   }
+  .full-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /*background-color: #475669;
+    z-index: -100;*/
+    background-color:#C0CCDA;
+  }
 </style>
 <template>
+	<div class="full-screen">
+	<!--<c-waves>-->
+	
+<!--------------------login form start------------------------------->	
   <div class="login">
     <el-row>
       <el-col :span="8">&nbsp;</el-col>
@@ -29,10 +46,18 @@
       </el-col>
     </el-row>
   </div>
+<!------------------login form end---------------------------------->
+  
+ <!-- </c-waves>-->
+  </div>
 </template>
 <script>
+//	import CWaves from 'components/CWaves'
   import {mapGetters} from 'vuex'
   export default {
+//	components: {
+//      CWaves
+//  },
     data() {
       let checkName = (rule, value, callback) => {
         if (!value) {

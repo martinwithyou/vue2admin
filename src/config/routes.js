@@ -32,11 +32,41 @@ export default [
         meta: {auth: true},
         component: resolve => require(['../modules/page2/'], resolve)
       },
+      {
+        path: 'demoPage',
+        meta: {auth: true},
+        component: resolve => require(['../modules/demoPage/'], resolve)
+      },
+      {
+        path: 'demoPage_a',
+        meta: {auth: true},
+        component: resolve => require(['../modules/demoPage_a/'], resolve)
+      },
+      {
+        path: 'demoPage_b',
+        meta: {auth: true},
+        component: resolve => require(['../modules/demoPage_b/'], resolve)
+      },
+      {
+        path: 'demoPage_c',
+        meta: {auth: true},
+        component: resolve => require(['../modules/demoPage_c/'], resolve)
+      },
+      {
+        path: 'demoPage_d',
+        meta: {auth: true},
+        component: resolve => require(['../modules/demoPage_d/'], resolve)
+      },
+      {
+        path: 'demoPage_e',
+        meta: {auth: true},
+        component: resolve => require(['../modules/demoPage_e/'], resolve)
+      }
     ]
   },
   {
     path: '*',
     meta: {auth: false},
-    component: resolve => require(['../modules/login/'], resolve)
+    component: resolve => require(['../modules/home/'], resolve)
   },
 ]
