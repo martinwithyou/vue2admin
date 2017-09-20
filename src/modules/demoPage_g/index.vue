@@ -123,9 +123,28 @@
      },
     methods: {
         submitForm(formName) {
+        	
+            //******************************************************
+            
+            console.log(this.$refs[formName]);
+            
+            //******************************************************
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!');
+          	
+            console.log('submit!');
+            //******************************************************
+            
+            this.$http.post('/path/to', formData).then((response) => {
+                
+                 console.log('ajax success');
+                 
+                }, (response) => {
+               
+                 console.log('ajax error!');
+            });
+            
+            //******************************************************
           } else {
             console.log('error submit!!');
             return false;

@@ -124,6 +124,17 @@
       	
       	var str=JSON.stringify(jsonObj);
       	
+      	
+      	this.$http({
+      		method:'post',
+      		url:'/mobile/edit/',
+      		data:str,
+      		header:{"X-Request-Width":"XMLHttpRequest"}
+      	}).then(function(response){
+      		this.posts=response.data;
+      	},function(error){
+      		alert("插入数据失败");
+      	})
 //    	$.ajax({
 //    		type:"post",
 //    		url:"www.baidu.com",
@@ -137,6 +148,15 @@
 //    		}
 //    	});
       	
+//    	this.$http.post('/path/to', jsonObj ).then((response) => {
+//              
+//          console.log('ajax success');
+//               
+//      }, (response) => {
+//             
+//          console.log('ajax error!');
+//      });
+        
       	alert(str);
       	
       }

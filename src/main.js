@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import store from './store'
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import './css/common.css'
@@ -15,6 +16,7 @@ import splitting from './modules/code-splitting-demo'
 
 Vue.use(VueRouter) //路由注册
 Vue.use(ElementUI) //UI框架注册
+Vue.use(VueResource)
 
 const router = new VueRouter({
   routes
