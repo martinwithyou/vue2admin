@@ -8,7 +8,7 @@ export default [
       {
         name: '页面1',
         path: '/home/page1'
-      }, {
+      },{
         name: '页面2',
         path: '/home/page2'
       },{

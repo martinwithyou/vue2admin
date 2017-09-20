@@ -20,7 +20,7 @@
     bottom: 0;
     /*background-color: #475669;
     z-index: -100;*/
-    background-color:#C0CCDA;
+    background-color:#324057;
   }
 </style>
 <template>
