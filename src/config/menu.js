@@ -15,6 +15,9 @@ export default [
       	name: '页面3',
       	path: '/home/demoPage'
       },{
+      	name: '页面4',
+      	path: '/home/page4'
+      },{
         name: 'TablePage_a',
         path: '/home/demoPage_a'
       }, {
