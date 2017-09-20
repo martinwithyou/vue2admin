@@ -51,5 +51,13 @@ export default [
   	  	path:'/home/demoPage_h'
   	  }
   	]
+  },{
+  	name: 'Forth bar',
+  	items:[
+  	  {
+  	  	name:'demoPage_i',
+  	  	path:'/home/demoPage_i'
+  	  }
+  	]
   }
 ]
