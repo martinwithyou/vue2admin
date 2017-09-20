@@ -1,12 +1,12 @@
 <style scoped>  
 .content_operation_day{  
     width:100%;
-    height:650px;
+    /*height:650px;*/
     background-color:#ffffff; 
 }  
 #main_operation_day{   
     width:100%;
-    height:650px;
+    /*height:650px;*/
     float:left;
     background-color:#ffffff;
     border:0px solid #008000;  
@@ -92,6 +92,24 @@ import $ from 'jquery'
   		})
   	},
     methods: {
+      handleEdit(index, row) {
+      	
+        console.log(index, row);
+        
+        //打印出每一列的信息
+        //以及具体参数
+        console.log(row.id);
+        console.log(row.userId);
+        console.log(row.title);
+        this.getInfo();
+        
+      },
+      handleDelete(index, row) {
+      	
+        console.log(index, row);
+        this.getInfo();
+        
+      },
       tableRowClassName(row, index) {
         if (index === 1) {
           return 'info-row';
@@ -105,8 +123,11 @@ import $ from 'jquery'
     	this.$http.get('https://jsonplaceholder.typicode.com/albums').then(function(response){
     	
          this.tableData=response.data;
+         
          console.log(this.tableData);
-          
+         
+         console.log("表格数据重新渲染。。。");
+         
         })
       },
       getInfoByAJAX(){
