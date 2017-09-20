@@ -124,6 +124,7 @@
       	
       	var str=JSON.stringify(jsonObj);
       	
+      	console.log("the data post:"+ str);
       	
       	this.$http({
       		method:'post',
@@ -135,29 +136,8 @@
       	},function(error){
       		alert("插入数据失败");
       	})
-//    	$.ajax({
-//    		type:"post",
-//    		url:"www.baidu.com",
-//    		async:false,
-//    		success:function(){
-//    			alert("post it success");
-//    		},
-//    		error:function(res){
-//    			console.log("ajax error");
-//    			console.log("错误详情:"+ res);
-//    		}
-//    	});
+
       	
-//    	this.$http.post('/path/to', jsonObj ).then((response) => {
-//              
-//          console.log('ajax success');
-//               
-//      }, (response) => {
-//             
-//          console.log('ajax error!');
-//      });
-        
-      	alert(str);
       	
       }
     }
