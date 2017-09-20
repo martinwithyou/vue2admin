@@ -35,5 +35,21 @@ export default [
       }
       
     ]
+  },{
+  	name: 'Second bar',
+  	items: [
+  	  {
+  	  	name:'demoPage_g',
+  	    path:'/home/demoPage_g'
+  	  }
+  	]
+  },{
+  	name: 'Third bar',
+  	items:[
+  	  {
+  	  	name:'demoPage_h',
+  	  	path:'/home/demoPage_h'
+  	  }
+  	]
   }
 ]

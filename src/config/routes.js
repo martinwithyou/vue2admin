@@ -66,6 +66,16 @@ export default [
         path: 'demoPage_f',
         meta: {auth: true},
         component: resolve => require(['../modules/demoPage_f/'], resolve)
+      },
+      {
+        path: 'demoPage_g',
+        meta: {auth: true},
+        component: resolve => require(['../modules/demoPage_g/'], resolve)
+      },
+      {
+        path: 'demoPage_h',
+        meta: {auth: true},
+        component: resolve => require(['../modules/demoPage_h/'], resolve)
       }
     ]
   },
