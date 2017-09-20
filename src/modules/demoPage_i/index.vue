@@ -50,7 +50,7 @@
             @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
             <el-button
             size="small"
-            type="danger"
+            type="success"
             @click="handleDelete(scope.$index, scope.row)">删除</el-button>
             </template>
             </el-table-column>
@@ -58,9 +58,133 @@
             </el-table>           
         <!---------------------------------------------------------------->
       </el-tab-pane>
-      <el-tab-pane label="消息中心">消息中心</el-tab-pane>
-      <el-tab-pane label="角色管理">角色管理</el-tab-pane>
-      <el-tab-pane label="定时任务补偿">定时任务补偿</el-tab-pane>
+      <el-tab-pane label="消息中心">
+      	<!----------------------------------------------------------------->
+      	    <el-table
+            :data="tableData_1"
+            height="630"
+            border
+            style="width: 100%">
+    
+            <el-table-column
+            prop="id"
+            label="ID"
+            width="200">
+            </el-table-column>
+    
+            <el-table-column
+            prop="title"
+            label="姓名"
+            width="300">
+            </el-table-column>
+    
+            <el-table-column
+            prop="userId"
+            label="用户ID">
+            </el-table-column>
+            
+            
+            <el-table-column label="操作">
+            <template scope="scope">
+            <el-button
+            size="small"
+            @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+            <el-button
+            size="small"
+            type="info"
+            @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+            </template>
+            </el-table-column>
+            
+            </el-table>
+      	<!----------------------------------------------------------------->
+      </el-tab-pane>
+      <el-tab-pane label="角色管理">
+      	<!----------------------------------------------------------------->
+      	
+      	    <el-table
+            :data="tableData_1"
+            height="630"
+            border
+            style="width: 100%">
+    
+            <el-table-column
+            prop="id"
+            label="ID"
+            width="200">
+            </el-table-column>
+    
+            <el-table-column
+            prop="title"
+            label="姓名"
+            width="300">
+            </el-table-column>
+    
+            <el-table-column
+            prop="userId"
+            label="用户ID">
+            </el-table-column>
+            
+            
+            <el-table-column label="操作">
+            <template scope="scope">
+            <el-button
+            size="small"
+            @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+            <el-button
+            size="small"
+            type="warning"
+            @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+            </template>
+            </el-table-column>
+            
+            </el-table>
+            
+      	<!----------------------------------------------------------------->
+      </el-tab-pane>
+      <el-tab-pane label="定时任务补偿">
+      	<!----------------------------------------------------------------->
+      	
+      	    <el-table
+            :data="tableData_1"
+            height="630"
+            border
+            style="width: 100%">
+    
+            <el-table-column
+            prop="id"
+            label="ID"
+            width="200">
+            </el-table-column>
+    
+            <el-table-column
+            prop="title"
+            label="姓名"
+            width="300">
+            </el-table-column>
+    
+            <el-table-column
+            prop="userId"
+            label="用户ID">
+            </el-table-column>
+            
+            
+            <el-table-column label="操作">
+            <template scope="scope">
+            <el-button
+            size="small"
+            @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+            <el-button
+            size="small"
+            type="danger"
+            @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+            </template>
+            </el-table-column>
+            
+            </el-table>
+            
+      	<!----------------------------------------------------------------->
+      </el-tab-pane>
    </el-tabs>
   </div>
 </template>
@@ -82,7 +206,8 @@ import $ from 'jquery'
   export default {
     data() {
       return {
-        tableData:""
+        tableData:"",
+        tableData_1:""
       }
     },
   	mounted(){
@@ -124,6 +249,8 @@ import $ from 'jquery'
     	
          this.tableData=response.data;
          
+         this.tableData_1=response.data;
+         
          console.log(this.tableData);
          
          console.log("表格数据重新渲染。。。");
@@ -138,7 +265,7 @@ import $ from 'jquery'
       		async:false,
       		success:function(res){
       			console.log(res);
-      			this.tableData=res;
+      			this.tableData_1=res;
       		},
       		error:function(res){
       			console.log("ajax error");
