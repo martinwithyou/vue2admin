@@ -45,21 +45,21 @@
         <br/>
 
         <div style="margin-top:0px">
-           <el-input placeholder="请输入内容" v-model="criteria" style="padding-bottom:10px;">
+            <el-input placeholder="请输入内容" v-model="criteria" style="padding-bottom:10px;">
               <el-select v-model="select" slot="prepend" placeholder="请选择">
                  <el-option label="id" value="1"></el-option>
                  <el-option label="name" value="2"></el-option>
               </el-select>
               <el-button slot="append" icon="search" v-on:click="search"></el-button>
-          </el-input>  
+            </el-input>  
         </div>
+        
         <!---------------------------------------------------------------->
             <el-table
             height="600"
             border
             ref="testTable"       
             :data="tableData"
-            border
             :default-sort = "{prop: 'id', order: 'ascending'}"
             @selection-change="handleSelectionChange"   
             @row-click="handleclick"
@@ -198,16 +198,21 @@ import $ from 'jquery'
                 	console.log(this.url);
                 	//*****************************************
                     this.$http.get(this.url,{parameter:criteria, pageNum:pageNum, pageSize:pageSize}).then(function(res){
-                    	console.log(res);
+                    	
+                    	//console.log(res);
+                    	
                         this.tableData = res.data;
-                        this.totalCount = res.data.number;
                         
-                        console.log(this.totalCount);
+                        //this.totalCount = res.data.number;
                         
-                        console.log(this.tableData);
+                        //console.log(this.totalCount);
+                        
+                        console.log(this.tableData[0]);
                         
                     },function(){
+                    	
                         console.log('failed');
+                        
                     });                 
                 },
                 
