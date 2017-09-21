@@ -1,12 +1,10 @@
 <style scoped>  
 .content_operation_day{  
     width:100%;
-    /*height:650px;*/
     background-color:#ffffff; 
 }  
 #main_operation_day{   
     width:100%;
-    /*height:650px;*/
     float:left;
     background-color:#ffffff;
     border:0px solid #008000;  
@@ -17,11 +15,16 @@
 .el-table .info-row {
     background: #c9e5f5;
 }   
-
 #top {
     background:#20A0FF;
     padding:5px;
     overflow:hidden;
+}
+.el-table .info-row {
+    background: #c9e5f5;
+}
+.el-table .positive-row {
+    background: #e2f0e4;
 }
 </style>  
 <template>
@@ -41,7 +44,7 @@
         <!----------------------------->
         <br/>
 
-        <div style="margin-top:15px">
+        <div style="margin-top:0px">
            <el-input placeholder="请输入内容" v-model="criteria" style="padding-bottom:10px;">
               <el-select v-model="select" slot="prepend" placeholder="请选择">
                  <el-option label="id" value="1"></el-option>
@@ -52,11 +55,21 @@
         </div>
         <!---------------------------------------------------------------->
             <el-table
-            :data="tableData_1"
-            height="630"
+            height="600"
             border
+            ref="testTable"       
+            :data="tableData"
+            border
+            :default-sort = "{prop: 'id', order: 'ascending'}"
+            @selection-change="handleSelectionChange"   
+            @row-click="handleclick"
+            :row-class-name = "tableRowClassName"
             style="width: 100%">
     
+            <el-table-column
+              type="selection">
+            </el-table-column>
+            
             <el-table-column
             prop="id"
             label="ID"
@@ -91,7 +104,7 @@
             
             
             <!------------------------------------------------------------>
-            <div align="center">
+            <div align="right">
               <el-pagination
                   @size-change="handleSizeChange"
                   @current-change="handleCurrentChange"
@@ -119,59 +132,12 @@
       <el-tab-pane label="定时任务补偿">
       	<!----------------------------------------------------------------->
       	
-      	    <el-table
-            :data="tableData_1"
-            height="630"
-            border
-            style="width: 100%">
-    
-            <el-table-column
-            prop="id"
-            label="ID"
-            width="200">
-            </el-table-column>
-    
-            <el-table-column
-            prop="title"
-            label="姓名"
-            width="300">
-            </el-table-column>
-    
-            <el-table-column
-            prop="userId"
-            label="用户ID">
-            </el-table-column>
-            
-            
-            <el-table-column label="操作">
-            <template scope="scope">
-            <el-button
-            size="small"
-            @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-            <el-button
-            size="small"
-            type="danger"
-            @click="handleDelete(scope.$index, scope.row)">删除</el-button>
-            </template>
-            </el-table-column>
-            
-            </el-table>
-            
       	<!----------------------------------------------------------------->
       </el-tab-pane>
    </el-tabs>
   </div>
 </template>
 
-<style>
-  .el-table .info-row {
-    background: #c9e5f5;
-  }
-
-  .el-table .positive-row {
-    background: #e2f0e4;
-  }
-</style>
 
 <script>
 import echarts from 'echarts'  
@@ -179,116 +145,90 @@ import $ from 'jquery'
 
   export default {
     data() {
+    	
       return {
-        tableData:"",
-        tableData_1:"",
-         //表格当前页数据
+      	
+        //表格当前页数据
         tableData: [],
 
         //多选数组
-          multipleSelection: [],
+        multipleSelection: [],
 
-                //请求的URL
-                url:'https://jsonplaceholder.typicode.com/albums',
+        //请求的URL
+        url:'https://jsonplaceholder.typicode.com/albums',
 
-                //搜索条件
-                criteria: '',
+        //搜索条件
+        criteria: '',
 
-                //下拉菜单选项
-                select: '',
+        //下拉菜单选项
+        select: '',
 
-                //默认每页数据量
-                pagesize: 10,
+        //默认每页数据量
+        pagesize: 10,
 
-                //默认高亮行数据id
-                highlightId: -1,
+        //默认高亮行数据id
+        highlightId: -1,
 
-                //当前页码
-                currentPage: 1,
+        //当前页码
+        currentPage: 1,
 
-                //查询的页码
-                start: 1,
+        //查询的页码
+        start: 1,
 
-                //默认数据总数
-                totalCount: 1000,
+        //默认数据总数
+        totalCount: 1000
+        
       }
+      
     },
   	mounted(){
+  		
   		this.$nextTick(function() {  
-  			this.getInfo();
-  			//this.getInfoByAJAX();
+  		
   			this.loadData(this.criteria, this.currentPage, this.pagesize);
+  			
   		})
   	},
     methods: {
-      handleEdit(index, row) {
-      	
-        console.log(index, row);
-        
-        //打印出每一列的信息
-        //以及具体参数
-        console.log(row.id);
-        console.log(row.userId);
-        console.log(row.title);
-        this.getInfo();
-        
-      },
-      handleDelete(index, row) {
-      	
-        console.log(index, row);
-        this.getInfo();
-        
-      },
-      tableRowClassName(row, index) {
-        if (index === 1) {
-          return 'info-row';
-        } else if (index === 3) {
-          return 'positive-row';
-        }
-        return '';
-      },
-      getInfo(){
-      	
-    	this.$http.get('https://jsonplaceholder.typicode.com/albums').then(function(response){
-    	
-         this.tableData=response.data;
-         
-         this.tableData_1=response.data;
-         
-         console.log(this.tableData);
-         
-         console.log("表格数据重新渲染。。。");
-         
-        })
-      },
-      getInfoByAJAX(){
-      	
-      	$.ajax({
-      		type:"get",
-      		url:"https://jsonplaceholder.typicode.com/albums",
-      		async:false,
-      		success:function(res){
-      			console.log(res);
-      			this.tableData_1=res;
-      		},
-      		error:function(res){
-      			console.log("ajax error");
-      		}
-      	});
-      	
-      	
-      },
-      
+
     //*********************************************************************************************************
                 //从服务器读取数据
-                loadData: function(criteria, pageNum, pageSize){                    
+                loadData: function(criteria, pageNum, pageSize){   
+                	//*****************************************
+                	console.log(this.url);
+                	//*****************************************
                     this.$http.get(this.url,{parameter:criteria, pageNum:pageNum, pageSize:pageSize}).then(function(res){
-                        this.tableData = res.data.pagestudentdata;
+                    	console.log(res);
+                        this.tableData = res.data;
                         this.totalCount = res.data.number;
+                        
+                        console.log(this.totalCount);
+                        
+                        console.log(this.tableData);
+                        
                     },function(){
                         console.log('failed');
                     });                 
                 },
+                
+                //************************************************************************************************
+                new_loadData: function(criteria,pageNum, pageSize){
+                	this.$http.get({
+                		method:'get',
+                		url:this.url,
+                		data:{parameter:criteria, pageNum:pageNum, pageSize:pageSize},
+                		headers: {"X-Requested-With": "XMLHttpRequest"},
+                        emulateJSON: true
+                	}).then(function(res){
+                       
+                        this.tableData=res.data;
+                        
+                	},function(error){
+                		
+                		console.log(error);
+                	})
+                },
+                //************************************************************************************************
 
                 //多选响应
                 handleSelectionChange: function(val) {
@@ -343,7 +283,7 @@ import $ from 'jquery'
                         }).then(({ value }) => {
                             if(value==''||value==null)
                                 return;
-                            this.$http.post('newstu/add',{"name":value},{emulateJSON: true}).then(function(res){
+                            this.$http.post(this.url,{"name":value},{emulateJSON: true}).then(function(res){
                                 this.loadData(this.criteria, this.currentPage, this.pagesize);
                             },function(){
                                 console.log('failed');
