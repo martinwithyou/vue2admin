@@ -170,7 +170,6 @@
 
   .feed-back {
     position: absolute;
-    /*padding-top: 10px;*/
     bottom: 16px;
   }
 
