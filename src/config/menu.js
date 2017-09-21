@@ -62,5 +62,13 @@ export default [
   	  	path:'/home/demoPage_i'
   	  }
   	]
+  },{
+  	name: 'Fifth bar',
+  	items:[
+  	  {
+  	  	name:'demoPage_j',
+  	  	path:'/home/demoPage_j'
+  	  }
+  	]
   }
 ]

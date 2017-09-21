@@ -86,6 +86,11 @@ export default [
         path: 'demoPage_i',
         meta: {auth: true},
         component: resolve => require(['../modules/demoPage_i/'], resolve)
+      },
+      {
+      	path: 'demoPage_j',
+        meta: {auth: true},
+        component: resolve => require(['../modules/demoPage_j/'], resolve)
       }
     ]
   },
