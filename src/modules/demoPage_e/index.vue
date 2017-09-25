@@ -1,7 +1,7 @@
 <style scoped>
 	.operation_bar{
 		width:98%;
-		height:70px;
+		height:200px;
 		border:0px solid #0099CC;
 		background-color: #ffffff;
 		margin-top:5px;
@@ -10,6 +10,7 @@
 		padding-left:20px;
 	}
 </style>
+
 <template>
   <div>
   
@@ -31,7 +32,7 @@
   
   <el-form-item label="开始时间">
   	<el-date-picker
-      v-model="value1"
+      v-model="formInline.value1"
       type="datetime"
       placeholder="选择日期时间">
     </el-date-picker>
@@ -39,7 +40,7 @@
   
   <el-form-item label="结束时间">
   	<el-date-picker
-      v-model="value2"
+      v-model="formInline.value2"
       type="datetime"
       placeholder="选择日期时间"
       align="right"
@@ -47,6 +48,15 @@
     </el-date-picker>
   </el-form-item>
  
+  <el-form-item label="活动性质">
+    <el-checkbox-group v-model="formInline.type">
+        <el-checkbox label="美食/餐厅线上活动" name="type"></el-checkbox>
+        <el-checkbox label="地推活动" name="type"></el-checkbox>
+        <el-checkbox label="线下主题活动" name="type"></el-checkbox>
+        <el-checkbox label="单纯品牌曝光" name="type"></el-checkbox>
+    </el-checkbox-group>
+  </el-form-item>
+    
   <el-form-item>
     <el-button type="primary" @click="onSubmit">查询</el-button>
   </el-form-item>
@@ -55,32 +65,46 @@
   	<!------------------------------------------------------->
   </div>
   
+  
+  <!----------------------------------------------------->
+  <!------------------------------------------------------>
+  
   <el-table
     ref="singleTable"
     :data="tableData"
     highlight-current-row
     @current-change="handleCurrentChange"
     style="width: 100%">
+    
     <el-table-column
       type="index"
       label="ID"
       width="80">
     </el-table-column>
+    
     <el-table-column
       property="date"
       label="日期"
       width="120">
     </el-table-column>
+    
     <el-table-column
       property="name"
       label="姓名"
       width="120">
     </el-table-column>
+    
     <el-table-column
       property="address"
       label="地址">
     </el-table-column>
+    
   </el-table>
+  
+  <!---------------------------------------------------------->
+  <!---------------------------------------------------------->
+  
+  
   <div style="margin-top: 20px">
     <el-button @click="setCurrent(tableData[1])">选中第二行</el-button>
     <el-button @click="setCurrent()">取消选择</el-button>
@@ -93,6 +117,16 @@
   export default {
     data() {
       return {
+      	formInline: {
+          name: '',
+          region: '',
+          date1: '',
+          date2: '',
+          delivery: false,
+          type: [],
+          resource: '',
+          desc: ''
+       },
       	pickerOptions1: {
           shortcuts: [{
             text: '今天',
